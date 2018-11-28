@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1543346693 source:c:\users\patry\desktop\programowanie\projekty\quizomat\main.cpp
+	"Menu.h"
+	"FileManager.h"
+	"TestHandler.h"
+	"Random.h"
+
+1542912411 c:\users\patry\desktop\programowanie\projekty\quizomat\menu.h
+	<iostream>
+	<cstdlib>
+	<fstream>
+
+1543348654 source:c:\users\patry\desktop\programowanie\projekty\quizomat\menu.cpp
+	"Menu.h"
+
+1543266000 c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.h
+	<string>
+	<fstream>
+	<iostream>
+	<map>
+	<vector>
+	<cctype>
+	<memory>
+
+1543264895 source:c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.cpp
+	"FileManager.h"
+	"Random.h"
+
+1542913714 c:\users\patry\desktop\programowanie\projekty\quizomat\questions.h
+	<string>
+	<map>
+
+1543347931 source:c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.cpp
+	"TestHandler.h"
+
+1543347912 c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.h
+	<ostream>
+	<map>
+	<string>
+	<vector>
+	<set>
+	"Random.h"
+	"FileManager.h"
+
+1543344608 source:c:\users\patry\desktop\programowanie\projekty\quizomat\random.cpp
+	"Random.h"
+
+1543329954 c:\users\patry\desktop\programowanie\projekty\quizomat\random.h
+	<random>
+	<iostream>
+
