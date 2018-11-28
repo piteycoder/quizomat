@@ -33,12 +33,12 @@ void Menu::howTo()
     std::cout << "w folderze z plikiem .exe znajduje sie plik .txt z ponumerowanymi pytaniami\n" << std::endl;
 
     std::cout << "Pytanie musi konczyc sie znakiem \'?\' lub \':\'" << std::endl;
-    std::cout << "Odpowiedzi musza znajdowac sie w jednej linii, ostatnia odpowiedz musi byc poprawna." << std::endl;
+    std::cout << "Odpowiedzi musza znajdowac sie jedna pod druga, jak w przykladzie." << std::endl;
 
     std::cout << "Przyklad dobrze sformulowanego pytania i odpowiedzi do nich:\n" << std::endl;
     std::cout << "1. Ile wynosi pierwiastek z 9?" << std::endl;
-    std::cout << "4 5 3 2 3" << std::endl;
-    std::cout << "        ^ program bedzie porownywal te odpowiedz z wybrana przez uzytkownika.\n" << std::endl;
+    std::cout << "A. 4 \nB. 5 \nC. 3 \nD.2 \nC <- ";
+    std::cout << "program bedzie porownywal te odpowiedz z wybrana przez uzytkownika.\n" << std::endl;
     std::cout << "Nie uzywaj polskich znakow - pracuje nad tym :)\n" << std::endl;
 
     std::cout << "Jezeli pomimo tego nadal masz problemy z programem, napisz na: patrykholub@gmail.com" << std::endl;

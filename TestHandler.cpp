@@ -10,11 +10,6 @@ TestHandler::TestHandler(std::pair<Map, Map> question_answer):
                         _answers(std::get<1>(question_answer))
                         {
                             _id = Random(_questions.size());
-                            _posAnswers.resize(_questions.size() + 1);
-                            for(unsigned int i = 1; i <= _questions.size(); i++){
-                                _posAnswers[i] = getPossibleAnswers(i);
-                            }
-
                         }
 
 TestHandler::TestHandler(std::pair<Map, Map> question_answer, bool subtractPts):
@@ -23,10 +18,6 @@ TestHandler::TestHandler(std::pair<Map, Map> question_answer, bool subtractPts):
                         _subtract(subtractPts)
                         {
                             _id = Random(_questions.size());
-                            _posAnswers.resize(_questions.size() + 1);
-                            for(unsigned int i = 1; i <= _questions.size(); i++){
-                                _posAnswers[i] = getPossibleAnswers(i);
-                            }
                         }
 
 TestHandler::TestHandler(std::pair<Map, Map> question_answer, bool subtractPts, Random&& random):
@@ -35,15 +26,12 @@ TestHandler::TestHandler(std::pair<Map, Map> question_answer, bool subtractPts, 
                         _subtract(subtractPts),
                         _id(random)
                         {
-                            _posAnswers.resize(_questions.size() + 1);
-                            for(unsigned int i = 1; i <= _questions.size(); i++){
-                                _posAnswers[i] = getPossibleAnswers(i);
-                            }
+
                         }
 
 bool TestHandler::init()
 {
-    std::cout << "Wlaczyc opcje ujemnych punktow?" << std::endl;
+    std::cout << "\nWlaczyc opcje ujemnych punktow?" << std::endl;
     std::cout << "1 - Tak\n0 - Nie" << std::endl;
     (std::cin >> _subtract).get();
     system("cls");
@@ -63,17 +51,13 @@ bool TestHandler::init()
 
         if(used.count(id))
             continue;
+        used.insert(id);
 
         std::cout << _questions[id] << std::endl;     ////// SHOWS QUESTION AND POSSIBLE ANSWERS
 
-        unsigned int j = 0;
-        for(char ch = 'A'; j < _posAnswers[id].size(); ++ch, ++j){
-            std::cout << ch << ". ";
-            std::cout << (_posAnswers[id])[ch] << std::endl;
-        }
-        char answer = getAnswer();
+        std::string answer = getAnswer();
 
-        if(_answers[id] == (_posAnswers[id])[answer]){
+        if(_answers[id] == answer){
             std::cout << "TAK" << std::endl;
             send.insert(id);
             _result++;
@@ -84,7 +68,6 @@ bool TestHandler::init()
             if(_subtract)
                 _result--;
         }
-        used.insert(id);
         std::cout << std::endl;
     }
 
@@ -93,37 +76,12 @@ bool TestHandler::init()
     return true;
 }
 
-std::map<char, std::string> TestHandler::getPossibleAnswers(unsigned short id)
-{
-    std::map<char, std::string> answers;
-    std::string& temp = _questions[id];
-    int i = temp.length();
-    int last = 0;
-    char ch = 'A';
-
-    while(temp[--i]){
-        last++;
-
-        if(isspace(temp[i])){
-           answers[ch] = temp.substr(i+1,last-1);
-           ch++;
-           last = 0;
-        }
-
-        if(temp[i] == '\n')
-            break;
-    }
-
-    temp.erase(i);
-
-    return answers;
-}
-
-char TestHandler::getAnswer(char answer)
+std::string TestHandler::getAnswer(std::string answer)
 {
     std::cout << "Twoja odpowiedz: ";
     std::cin >> answer;
-    return toupper(answer);
+    answer[0] = toupper(answer[0]);
+    return answer;
 }
 
 void TestHandler::showResult()
@@ -137,9 +95,11 @@ void TestHandler::showResult()
 
 void TestHandler::rerun(Map& _wronglyAnswered, std::set<unsigned short>& used)
 {
-        std::set<unsigned short> send;
         unsigned int id = 0;
+
         while(_wronglyAnswered.size() > 0){
+
+        std::cout << "wrongly answered size: " << _wronglyAnswered.size() << std::endl;
         id = _id.getRandomNumber();
 
         if(used.count(id))
@@ -147,25 +107,25 @@ void TestHandler::rerun(Map& _wronglyAnswered, std::set<unsigned short>& used)
 
         std::cout << _wronglyAnswered[id] << std::endl;     ////// SHOWS QUESTION AND POSSIBLE ANSWERS
 
-        unsigned int j = 0;
-        for(char ch = 'A'; j < _posAnswers[id].size(); ++ch, ++j){
-            std::cout << ch << ". ";
-            std::cout << (_posAnswers[id])[ch] << std::endl;
-        }
-        char answer = getAnswer();
+        std::string answer = getAnswer();
 
-        if(_answers[id] == (_posAnswers[id])[answer]){
+        if(_answers[id] == answer){
             _wronglyAnswered.erase(id);
-            send.insert(id);
+            used.insert(id);
             std::cout << "TAK" << std::endl;
         }
         else{
             std::cout << "NIE - poprawna odpowiedz to " << _answers[id] << std::endl;
         }
-        used.insert(id);
+
         std::cout << std::endl;
     }
-    if(_wronglyAnswered.size())
-        rerun(_wronglyAnswered, send);
+}
+
+void TestHandler::setAnswers(const std::array< std::map<char, std::string>, FileManager::QUESTIONS>& givenAnswers)
+{
+    for(int i = 0; i < FileManager::QUESTIONS; ++i){
+        _posAnswers[i] = givenAnswers[i];
+    }
 }
 }
