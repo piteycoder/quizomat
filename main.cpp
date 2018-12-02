@@ -45,6 +45,8 @@ int main()
 
 
                 TestHandler test(file.readQuiz());
+                test.setAnswers(file.getAnswers());
+
                 if(!test.init()){
                     std::cout << "Blad w funkcji test.init()" << std::endl;
                     break;

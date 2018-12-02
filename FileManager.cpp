@@ -61,13 +61,15 @@ namespace quizomat{
 
             /////////// READS ANSWERS //////////////
 
-            std::getline(*_pFile, text);
-            i = text.length() - 1;
-            while(!isspace(text[--i])){}
-
-            answers[questionID] = text.substr(i+1);
-            questions[questionID] += '\n';
-            questions[questionID] += text.substr(0, i);
+            for(int i = 0; i < 5; ++i){
+                std::getline(*_pFile, text);
+                if(i == 4){
+                    answers[questionID] = text[0];
+                } else {
+                    (_answers[questionID])[text[0]] = text;
+                    questions[questionID] += '\n' + text;
+                }
+            }
 
             number.clear();
         }
@@ -85,5 +87,10 @@ namespace quizomat{
             result += (reverseNumbers[i] - '0') * multiplier;
         }
         return result;
+    }
+
+    const std::array< std::map<char, std::string>, FileManager::QUESTIONS>& FileManager::getAnswers()
+    {
+        return _answers;
     }
 }

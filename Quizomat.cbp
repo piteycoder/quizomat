@@ -42,6 +42,7 @@
 		<Unit filename="TestHandler.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="test pytania.txt" />
+		<Unit filename="test.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

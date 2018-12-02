@@ -23,16 +23,16 @@ class TestHandler
         TestHandler(std::pair<Map, Map>, bool, Random&&);
         bool init();
         void showResult();
+        void setAnswers(const std::array< std::map<char, std::string>, FileManager::QUESTIONS>&);
 
     private:
-        std::map<char, std::string> getPossibleAnswers(unsigned short id);
-        char getAnswer(char='A');
+        std::string getAnswer(std::string="");
         void rerun(Map&, std::set<unsigned short>&);
 
     private:
         Map _questions;
         Map _answers;
-        std::vector< std::map<char, std::string> > _posAnswers;
+        std::array< std::map<char, std::string>, FileManager::QUESTIONS> _posAnswers;
         bool _subtract = 0;
         Random _id;
         int _result = 0;

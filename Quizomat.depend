@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1543346693 source:c:\users\patry\desktop\programowanie\projekty\quizomat\main.cpp
+1543436042 source:c:\users\patry\desktop\programowanie\projekty\quizomat\main.cpp
 	"Menu.h"
 	"FileManager.h"
 	"TestHandler.h"
@@ -10,19 +10,20 @@
 	<cstdlib>
 	<fstream>
 
-1543348654 source:c:\users\patry\desktop\programowanie\projekty\quizomat\menu.cpp
+1543437435 source:c:\users\patry\desktop\programowanie\projekty\quizomat\menu.cpp
 	"Menu.h"
 
-1543266000 c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.h
+1543436013 c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.h
 	<string>
 	<fstream>
 	<iostream>
 	<map>
+	<array>
 	<vector>
 	<cctype>
 	<memory>
 
-1543264895 source:c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.cpp
+1543436836 source:c:\users\patry\desktop\programowanie\projekty\quizomat\filemanager.cpp
 	"FileManager.h"
 	"Random.h"
 
@@ -30,10 +31,10 @@
 	<string>
 	<map>
 
-1543347931 source:c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.cpp
+1543438111 source:c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.cpp
 	"TestHandler.h"
 
-1543347912 c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.h
+1543436657 c:\users\patry\desktop\programowanie\projekty\quizomat\testhandler.h
 	<ostream>
 	<map>
 	<string>

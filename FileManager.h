@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <array>
 #include <vector>
 #include <cctype>
 #include <memory>
@@ -15,10 +16,14 @@ namespace quizomat{
 
 class FileManager
 {
+public:
+    static const unsigned int QUESTIONS = 1024;
+
 private:
     std::ifstream _file;
     std::string _filename;
     std::istream* _pFile = nullptr;
+    std::array< std::map<char, std::string>, QUESTIONS> _answers;
 
 public:
     FileManager(std::string name): _filename(name){}
@@ -28,6 +33,7 @@ public:
     bool getFilename();
     bool fileSearch();
     std::pair<Map, Map> readQuiz();
+    const std::array< std::map<char, std::string>, QUESTIONS>& getAnswers();
 
 private:
     unsigned short stringToInt(const std::vector<char>& reverseNumbers);
